@@ -1,4 +1,4 @@
-package com.alejandromateo.hexagonal.infrastructure.repository
+package com.alejandromateo.hexagonal.infrastructure.adapters.outbound.repository
 
 import com.alejandromateo.hexagonal.application.Customer
 import com.alejandromateo.hexagonal.application.CustomerRepository

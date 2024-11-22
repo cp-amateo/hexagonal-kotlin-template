@@ -1,4 +1,4 @@
-package com.alejandromateo.hexagonal.infrastructure.api
+package com.alejandromateo.hexagonal.infrastructure.adapters.inbound.api
 
 import com.alejandromateo.hexagonal.application.CustomerRepository
 import org.springframework.web.bind.annotation.GetMapping
