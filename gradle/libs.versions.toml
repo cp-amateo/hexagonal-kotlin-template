@@ -5,6 +5,9 @@ springBoot = "3.2.1"
 springDependencyManagement = "1.1.6"
 kotlinSpring = "2.0.21"
 gradleGithook = "1.2.1"
+junit = "5.8.2"
+mockk= "1.13.13"
+assertk="0.28.1"
 
 [plugins]
 githook = {id = "com.star-zero.gradle.githook", version.ref = "gradleGithook"}
@@ -13,9 +16,12 @@ springBoot = {id = "org.springframework.boot", version.ref = "springBoot" }
 kotlinSpring = {id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlinSpring" }
 
 [libraries]
+junit-jupiter = {module = "org.junit.jupiter:junit-jupiter", version.ref = "junit"}
 mockito-core = {module = "org.mockito:mockito-core", version.ref = "mockito"}
 mockito-junit-jupiter = {module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito"}
 assertj-core = {module = "org.assertj:assertj-core", version.ref = "assertj"}
+mockk = {module = "io.mockk:mockk", version.ref = "mockk"}
+assertk = {module = "com.willowtreeapps.assertk:assertk", version.ref = "assertk"}
 
 springboot-web = {module = "org.springframework.boot:spring-boot-starter-web", version.ref = "springBoot"}
 springboot-starter-test = {module = "org.springframework.boot:spring-boot-starter-test", version.ref = "springBoot"}
@@ -23,3 +29,5 @@ springboot-starter-test = {module = "org.springframework.boot:spring-boot-starte
 
 [bundles]
 spring = ["springboot-web"]
+testbase = ["junit-jupiter", "mockito-core", "mockito-junit-jupiter", "assertj-core", "mockk", "assertk"]
+

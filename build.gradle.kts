@@ -5,6 +5,10 @@ plugins {
   alias(libs.plugins.githook)
 }
 
+application {
+  mainClass.set("com.alejandromateo.hexagonal.infrastructure.SpringAppKt")
+}
+
 allprojects {
   group = "com.alejandromateo"
   version = "0.0.1-SNAPSHOT"
@@ -23,8 +27,8 @@ subprojects {
     targetCompatibility = JavaVersion.VERSION_21
   }
 
+
   dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
   }
 
   tasks.withType<Test> {
