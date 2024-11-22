@@ -1,0 +1,40 @@
+def versionProps = new Properties()
+versionProps.load(new FileInputStream(project.file("./version.properties")))
+version=versionProps['version']
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier 'sources'
+    from sourceSets.main.allSource
+}
+
+jar {
+    from sourceSets.main.output
+    enabled = true
+}
+
+
+task incrementPatchVersion {
+    doFirst {
+        println "CURRENT VERSION: ${version}"
+
+        String minor = version.substring(version.lastIndexOf('.')+1)
+        int nextPatch = minor.toInteger() + 1
+
+        String prefixMinorVersion = version.substring(0, version.lastIndexOf('.'))
+        String nextVersion="$prefixMinorVersion.$nextPatch"
+
+        versionProps["version"] = nextVersion
+        def stream = new FileOutputStream(project.file("./version.properties"))
+        versionProps.store(stream, '')
+        stream.close()
+
+        println "NEW VERSION: ${nextVersion}"
+    }
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'FAILED', 'SKIPPED'
+    }
+}

@@ -1,0 +1,25 @@
+[versions]
+assertj = "3.24.2"
+mockito = "5.5.0"
+springBoot = "3.2.1"
+springDependencyManagement = "1.1.6"
+kotlinSpring = "2.0.21"
+gradleGithook = "1.2.1"
+
+[plugins]
+githook = {id = "com.star-zero.gradle.githook", version.ref = "gradleGithook"}
+springDependencyManagement = {id = "io.spring.dependency-management", version.ref = "springDependencyManagement"}
+springBoot = {id = "org.springframework.boot", version.ref = "springBoot" }
+kotlinSpring = {id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlinSpring" }
+
+[libraries]
+mockito-core = {module = "org.mockito:mockito-core", version.ref = "mockito"}
+mockito-junit-jupiter = {module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito"}
+assertj-core = {module = "org.assertj:assertj-core", version.ref = "assertj"}
+
+springboot-web = {module = "org.springframework.boot:spring-boot-starter-web", version.ref = "springBoot"}
+springboot-starter-test = {module = "org.springframework.boot:spring-boot-starter-test", version.ref = "springBoot"}
+
+
+[bundles]
+spring = ["springboot-web"]
