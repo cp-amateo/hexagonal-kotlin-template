@@ -30,18 +30,21 @@ subprojects {
   tasks.withType<Test> {
     useJUnitPlatform()
   }
+}
 
-  githook {
-    failOnMissingHooksDir = true
-    createHooksDirIfNotExist = true
+tasks.register<Exec>("gitRestage") {
+  description = "Add changes to staged files to git."
+  commandLine = listOf("git", "update-index", "--again")
+}
 
-    hooks.create("pre-commit") {
-      task = "spotlessApply gitRestage -q spotlessCheck checkBranch"
-      shell = "echo \"Latest changes have been autoformatted correctly with Spotless!\""
-    }
+githook {
+  failOnMissingHooksDir = true
+  createHooksDirIfNotExist = true
 
+  hooks.create("pre-commit") {
+    task = "spotlessApply gitRestage -q spotlessCheck checkBranch"
+    shell = "echo \"Latest changes have been autoformatted correctly with Spotless!\""
   }
-
 }
 
 
